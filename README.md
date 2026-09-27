@@ -85,10 +85,50 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 *   Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped. Delegation target validated against Stage 1 veto to prevent spoofing.
 *   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating.
 *   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Consequence Mode activates immediately.
-*   Sideloaded Browser Detection — newly installed browsers detected via installer/store package monitoring and blocked at the app classifier level on first launch.
+*   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
 
+---
+## 🛠️ Step-by-Step Setup Guide
+You're right. The `qiezka.bat` is an optional developer convenience tool — it automates things like granting `WRITE_SECURE_SETTINGS` silently via ADB. The actual normal user flow from the onboarding is entirely on-device. Let me redo it.
 
+---
 
+## 🛠️ Step-by-Step Setup Guide
+2-Ways
+---
 
+### 📱 On-Device Setup
 
+Grant each permission directly from within the app via in-app buttons:
+
+| Permission | Type | Purpose |
+|---|---|---|
+| Accessibility Service | **Essential** | Intercepts distracting apps and Websites |
+| Notifications | **Essential** | Countdown alerts, warnings |
+| Unrestricted Background | **Essential** | Prevents OEM battery killers from stopping enforcement |
+| Device Administrator | **Essential** | Blocks uninstalling QIEZKA during lockdown |
+
+> On Android 13+: if Accessibility appears greyed out, tap **App Info** inside the onboarding — then tap the three-dot menu → *Allow restricted settings* — then return and grant it.
+
+### 📱 ADB Setup (via `qiezka.bat`)
+
+**Prerequisites:**
+- PC
+- Android platform-tools (ADB) installed in PC
+- USB Debugging enabled on your phone (Developer Options)
+- Phone connected via USB and authorized
+
+**Run the script:**
+```
+Double-click qiezka.bat and allow the app to make changes to the Device
+
+```
+
+The script runs the following steps:
+1. Automatic single device Detected, User controlled if multiple devices detected
+2. Installs the APK (or updates it keeping all existing data)
+3. Grants system permissions
+4. Whitelists QIEZKA from aggressive OEM battery killers (Samsung, Xiaomi, Pixel)
+
+After the script finishes, QIEZKA launches automatically on your phone. **Disconnect the USB — setup is complete.**
 
