@@ -59,14 +59,36 @@ SIREN is a professional-grade, open-source focus lockdown utility for Android. B
 
 ### 1. 3-Stage App Classifier 🧠
 *   Stage 1 — Master Veto Gate: 
-   *    Android Settings, all OEM Phone Managers (MIUI Security Center, Samsung Device Care, ColorOS SafeCenter), and hardware bloatware (Joyose, GameCenter, PalmStore, Glance) are unconditionally blocked. Noexceptions, no appeal.
+Android Settings, all OEM Phone Managers (MIUI Security Center, Samsung Device Care, ColorOS SafeCenter), and hardware bloatware (Joyose, GameCenter, PalmStore, Glance) are unconditionally blocked. Noexceptions, no appeal.
 *   Stage 2 — Evaluation:
-   *    Apps on the KnownSafe.kt are allowed, Apps on the KnownDistracting.kt are blocked
-   *    Qiezka uses table in order to know if it should block an app or not
-   *    If an App is Undefined Qiezka will trie to Evaluate it
-          *    CATEGORY_GAME always blocked. CATEGORY_SOCIAL blocked. CATEGORY_VIDEO and CATEGORY_NEWS blocked. CATEGORY_PRODUCTIVITY allowed unless it's a remote desktop or screen share tool (TeamViewer, AnyDesk, RustDesk, Kali NetHunter KeX, Termux:X11 — all explicitly intercepted).
+Apps on the KnownSafe.kt are allowed, Apps on the KnownDistracting.kt are blocked.
+Qiezka uses table in order to know if it should block an app or not + Unified Policy toggle.
+If an App is Undefined Qiezka will try to Evaluate it
+CATEGORY_GAME always blocked. CATEGORY_SOCIAL blocked. CATEGORY_VIDEO and CATEGORY_NEWS blocked. CATEGORY_PRODUCTIVITY allowed. Combined with Positive and Negative Signals
 *   Stage 3 — Universal System Gateway:
-   *    Apps on the OEM system partition (FLAG_SYSTEM) that passed all veto gates are allowed as legitimate hardware infrastructure.
+Apps on the OEM system partition (FLAG_SYSTEM) that passed all veto gates are allowed as legitimate hardware infrastructure.
 *   Layer 5 — Conservative Fallback:
-   *    Unknown user-installed app with no category, no academic signals, not system-partitioned → blocked.
+Unknown user-installed app with no category, no academic signals, not system-partitioned → blocked.
+### 2. 2-Stage Web and PWA/TWA Classifier 🌐
+*   Stage 1 — Evaluation: 
+URL on KnwonSafeWeb.kt are allowed, URK on the KnownDistracting.kt are blocked.
+Qiezka uses table in order to know if it should block a URL or not + Unified Policy toggle.
+If a URL is Undefined Qiezka will try to Evaluate it
+Live Chromium DOM scan reads the page's accessibility tree — academic signals promote it, distraction signals block it.
+*   Stage 2 — Conservative Fallback:
+Unknown URL with no academic signals, with or without distraction signals are Blocked.
+
+### 3. Anti-Bypass Stack ⚔️
+*   Device Admin — blocks uninstall.
+*   Accessibility Service — Follows 3-Stage App Classifier and 2-Stage Web and PWA/TWA Classifier
+*   Quick Settings Collapse — QS panel collapses via StatusBar reflection the moment it's expanded during lockdown (not working)
+*   Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped. Delegation target validated against Stage 1 veto to prevent spoofing.
+*   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating.
+*   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Consequence Mode activates immediately.
+*   Sideloaded Browser Detection — newly installed browsers detected via installer/store package monitoring and blocked at the app classifier level on first launch.
+
+
+
+
+
 
