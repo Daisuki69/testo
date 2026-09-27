@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Query QIEZKA and launcher packages -->
     <queries>
-        <package android:name="com.uncode.app" />
         <intent>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.HOME" />
@@ -15,32 +13,34 @@
 
     <application
         android:allowBackup="false"
-        android:label="SIREN Home"
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_transparent"
+        android:roundIcon="@drawable/ic_transparent"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        android:theme="@style/Theme.SirenProxy">
 
-        <!--
-            SirenHomeActivity — Invisible HOME handler.
-            Registers as a Home launcher so Android forwards HOME presses here.
-            Checks if the target app (QIEZKA) is alive, revives it if dead,
-            then transparently delegates to the user's real launcher.
-        -->
         <activity
             android:name=".SirenHomeActivity"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_transparent"
+            android:theme="@style/Theme.SirenProxy"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
             android:excludeFromRecents="true"
             android:noHistory="true"
-            android:taskAffinity=""
+            android:clearTaskOnLaunch="true"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:priority="1">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="com.siren.homeproxy.ACTION_REQUEST_HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
-        <!--
-            SirenBootReceiver — Ensures target app is launched on device boot.
-        -->
         <receiver
             android:name=".SirenBootReceiver"
             android:exported="true"
