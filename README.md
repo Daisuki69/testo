@@ -90,8 +90,7 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 ---
 
 ## 🛠️ Step-by-Step Setup Guide
-2-Ways
----
+On-Device or ADB
 
 ### 📱 On-Device Setup
 
@@ -116,7 +115,7 @@ Grant each permission directly from within the app via in-app buttons:
 
 **Run the script:**
 ```
-Double-click qiezka.bat and allow the app to make changes to the Device
+Double-click qiezka.bat and at the User Account Control pop-up select yes
 
 ```
 
