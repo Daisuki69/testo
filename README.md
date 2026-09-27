@@ -129,8 +129,11 @@ After the script finishes, QIEZKA launches automatically on your phone. **Discon
 
 ---
 
+---
+
 **Try setting SIREN as Home, something boringly magical happens if you force stop SIREN via ADB**
 
+---
 **App was tested on:**
 - Redmi Note 12 4G (tapas) running Android 16 QPR1 Evolution-X 11.5 ROM
 - SAMSUNG Galaxy A30 running Android 11 One UI 3.1
