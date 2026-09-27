@@ -130,9 +130,21 @@ After the script finishes, QIEZKA launches automatically on your phone. **Discon
 
 ---
 
-**Try setting SIREN as Home, something boringly magical happens if you force stop SIREN via ADB**
+**Want even more?**
 
+Set SIREN as Home App
+
+***What does SIREN HomeHandler do?***
+- It only checks if Main UI is operational, It then relaunches it if not
+- Immediately launch User selected/SIREN Detected HomeLauncher
+
+***Why?**
+- Everytime the OS boots one of the first things they launch is the HomeApp
+- Everytime the user clicks home button Android launches the HomeApp
+- Even if SIREN is fully killed, click home Android launches the HomeApp
+  
 ---
+
 **App was tested on:**
 - Redmi Note 12 4G (tapas) running Android 16 QPR1 Evolution-X 11.5 ROM
 - SAMSUNG Galaxy A30 running Android 11 One UI 3.1
