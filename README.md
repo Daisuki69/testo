@@ -127,7 +127,6 @@ The script runs the following steps:
 
 After the script finishes, QIEZKA launches automatically on your phone. **Disconnect the USB — setup is complete.**
 
----
 
 ---
 
