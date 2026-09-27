@@ -89,7 +89,8 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 
 ---
 
-## 🛠️ Step-by-Step Setup Guide
+## 🛠️ Step-by-Step Setup Guide:
+To run SIREN Quiz App, your device must do the following steps:
 On-Device or ADB
 
 ### 📱 On-Device Setup
@@ -116,7 +117,6 @@ Grant each permission directly from within the app via in-app buttons:
 **Run the script:**
 ```
 Double-click qiezka.bat and at the User Account Control pop-up select yes
-
 ```
 
 The script runs the following steps:
@@ -126,4 +126,9 @@ The script runs the following steps:
 4. Whitelists QIEZKA from aggressive OEM battery killers (Samsung, Xiaomi, Pixel)
 
 After the script finishes, QIEZKA launches automatically on your phone. **Disconnect the USB — setup is complete.**
+
+App was Tested on
+Redmi Note 12 4G (tapas) running Android 16 QPR1 Evolution-X 11.5 ROM
+SAMSUNG Galaxy A30 running Android 11 One UI 3.1
+
 
