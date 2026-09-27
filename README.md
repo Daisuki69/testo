@@ -88,10 +88,6 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 *   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
 
 ---
-## 🛠️ Step-by-Step Setup Guide
-You're right. The `qiezka.bat` is an optional developer convenience tool — it automates things like granting `WRITE_SECURE_SETTINGS` silently via ADB. The actual normal user flow from the onboarding is entirely on-device. Let me redo it.
-
----
 
 ## 🛠️ Step-by-Step Setup Guide
 2-Ways
