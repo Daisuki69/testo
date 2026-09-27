@@ -127,8 +127,10 @@ The script runs the following steps:
 
 After the script finishes, QIEZKA launches automatically on your phone. **Disconnect the USB — setup is complete.**
 
-App was Tested on
-Redmi Note 12 4G (tapas) running Android 16 QPR1 Evolution-X 11.5 ROM
-SAMSUNG Galaxy A30 running Android 11 One UI 3.1
+---
+
+**App was tested on:**
+- Redmi Note 12 4G (tapas) running Android 16 QPR1 Evolution-X 11.5 ROM
+- SAMSUNG Galaxy A30 running Android 11 One UI 3.1
 
 
