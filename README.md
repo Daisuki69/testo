@@ -132,16 +132,11 @@ After the script finishes, QIEZKA launches automatically on your phone. **Discon
 
 **Want even more?**
 
-Set SIREN as Home App
+Set SIREN HomeProxy as Home App
 
-***What does SIREN HomeHandler do?***
-- It only checks if Main UI is operational, It then relaunches it if not
-- Immediately launch User selected/SIREN Detected HomeLauncher
+**What does SIREN HomeProxy do?**
+- It only checks if SIREN is operational, It then relaunches it if not
 
-***Why?**
-- Everytime the OS boots one of the first things they launch is the HomeApp
-- Everytime the user clicks home button Android launches the HomeApp
-- Even if SIREN is fully killed, click home Android launches the HomeApp
   
 ---
 
