@@ -70,10 +70,10 @@ Tho reality still holds for the 1% of power users: if you *already* have ADB set
 *   Stage 1 — Master Veto Gate: 
 Android Settings, all OEM Phone Managers (MIUI Security Center, Samsung Device Care, ColorOS SafeCenter), and hardware bloatware (Joyose, GameCenter, PalmStore, Glance) are unconditionally blocked. Noexceptions, no appeal.
 *   Stage 2 — Evaluation:
-Apps on the KnownSafe.kt are allowed, Apps on the KnownDistracting.kt are blocked.
-Qiezka uses table in order to know if it should block an app or not + Unified Policy toggle.
+Apps on the KnownSafe.kt are allowed, Apps on the KnownDistracting.kt are blocked unless Unified Policy says so.
+Qiezka uses table in order to know if it should block an app or not.
 If an App is Undefined Qiezka will try to Evaluate it
-CATEGORY_GAME always blocked. CATEGORY_SOCIAL blocked. CATEGORY_VIDEO and CATEGORY_NEWS blocked. CATEGORY_PRODUCTIVITY allowed. Combined with Positive and Negative Signals
+CATEGORY_GAME blocked. CATEGORY_SOCIAL blocked. CATEGORY_VIDEO and CATEGORY_NEWS blocked. CATEGORY_PRODUCTIVITY allowed. Combined with Positive and Negative Signals
 *   Stage 3 — Universal System Gateway:
 Apps on the OEM system partition (FLAG_SYSTEM) that passed all veto gates are allowed as legitimate hardware infrastructure.
 *   Layer 5 — Conservative Fallback:
@@ -89,64 +89,33 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 
 ### 3. Anti-Bypass Stack ⚔️
 *   Device Admin — blocks uninstall.
-*   Accessibility Service — Follows 3-Stage App Classifier and 2-Stage Web and PWA/TWA Classifier
-*   Quick Settings Collapse — QS panel collapses via StatusBar reflection the moment it's expanded during lockdown (not working)
-*   Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped. Delegation target validated against Stage 1 veto to prevent spoofing.
+*   Accessibility Service — blocks ddistracting apps
+*  Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped/Killed. Works best in 3 button navigation. (OLD KeepAlive Strategy)
+
 *   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating.
-*   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Consequence Mode activates immediately.
+(OLD KeepAlive Strategy)
+*   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Post Lockdown activates immediately.
 *   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
 
 ---
 
 ## 🛠️ Step-by-Step Setup Guide:
-To run SIREN Quiz App, your device must do the following steps:
-On-Device or ADB
+To instal Qiezka App.
+On-Device
 
 ### 📱 On-Device Setup
 
 Grant each permission directly from within the app via in-app buttons:
 
-| Permission | Type | Purpose |
-|---|---|---|
-| Accessibility Service | **Essential** | Intercepts distracting apps and Websites |
-| Notifications | **Essential** | Countdown alerts, warnings |
-| Unrestricted Background | **Essential** | Prevents OEM battery killers from stopping enforcement |
-| Device Administrator | **Essential** | Blocks uninstalling QIEZKA during lockdown |
+| Permission | Type |
+|---|---|
+| Accessibility Service | **Essential** |
+| Notifications | **Essential** |
+| Unrestricted Background | **Essential** |
+| Device Administrator | **Essential** |
 
 > On Android 13+: if Accessibility appears greyed out, tap **App Info** inside the onboarding — then tap the three-dot menu → *Allow restricted settings* — then return and grant it.
 
-### 📱 ADB Setup (via `qiezka.bat`)
-
-**Prerequisites:**
-- PC
-- Android platform-tools (ADB) installed in PC
-- USB Debugging enabled on your phone (Developer Options)
-- Phone connected via USB and authorized
-
-**Run the script:**
-```
-Double-click qiezka.bat and at the User Account Control pop-up select yes
-```
-
-The script runs the following steps:
-1. Automatic single device Detected, User controlled if multiple devices detected
-2. Installs the APK (or updates it keeping all existing data)
-3. Grants system permissions
-4. Whitelists QIEZKA from aggressive OEM battery killers (Samsung, Xiaomi, Pixel)
-
-After the script finishes, QIEZKA launches automatically on your phone. **Disconnect the USB — setup is complete.**
-
-
----
-
-**Want even more?**
-
-Set SIREN HomeProxy as Home App
-
-**What does SIREN HomeProxy do?**
-- It only checks if SIREN is operational, It then relaunches it if not
-
-  
 ---
 
 **App was tested on:**
