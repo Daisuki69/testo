@@ -24,13 +24,17 @@ E - Enforcement against bypass
 
 U cannot Exist exactly at the same time as I
 User decision makes Integrity in jeopardy a user can lie that an obvious distracting app is not distracting.
+
 1. U + E is a combination where Usually Majority of focus apps exist from weak to Ultra strong focus apps.
+
 ​2. I + E is Where real Integrity Exist.
 
 The only time a U can exist at the same time as I is if it is bounded By I
 such as:
 1. I (U) + E
+
 ​2. I (U)
+
 The only catch is
 U can only restrict further than what I already allowed in the first place.
 Choice 1. is the IDEAL Focus app but only IF it can be granted using standard android permissions
