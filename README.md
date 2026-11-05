@@ -16,9 +16,47 @@
 Qiezka 🛡️
 Is a normal quiz based lockdown app for Android.
 
- By utilizing Device Owner administrative privileges (similar to corporate IT policies) combined with a local Edge AI Screen Sniper, Halanoi makes it virtually impossible to bypass your focus session or sneak past your study blocks.
+Let us establish first a taxonomy
+
+I - Enforcing the Core goal(Integrity in our Case)
+U - User Driven Allowlist Blocklist 
+E - Enforcement against bypass
+
+U cannot Exist exactly at the same time as I
+User decision makes Integrity in jeopardy a user can lie that an obvious distracting app is not distracting.
+1. U + E is a combination where Usually Majority of focus apps exist from weak to Ultra strong focus apps.
+​2. I + E is Where real Integrity Exist.
+
+The only time a U can exist at the same time as I is if it is bounded By I
+such as:
+1. I (U) + E
+​2. I (U)
+The only catch is
+U can only restrict further than what I already allowed in the first place.
+Choice 1. is the IDEAL Focus app but only IF it can be granted using standard android permissions
+By forcing the user to learn ADB or root their phone just to install the app, those tools accidentally train the user on how to defeat them.
+eg. Device-Owner, Shizuku, Root Based
+
+Device Owner is included even if the only way out is flashing stock firmware via recovery/fastboot. because via the steps they did the user learned what a normal user woudlnt.
+Also a bugged app running as Device Owner or Root is inherently more destructive
+ 
+a user can provide the permissions just by tapping 
+A Low Floor to Enter, High Ceiling to Escape
+
+By keeping the setup strictly on standard permissions, this architecture creates **asymmetric friction**:
+ * **The Entry Floor (Zero Technical Skill):** Any normal user can install two APKs and tap "Allow" on Android's native UI prompts for Accessibility, Device Admin, Battery Optimization, and Default Home App (RoleManager.ROLE_HOME). Even Android 13+'s "Restricted Settings" block is guided step-by-step right inside PermissionWalkthrough.tsx. You don't need a PC, terminal commands, or developer options to lock yourself in.
+ * **The Escape Ceiling:** Once those standard toggles are flipped, the two APKs interlock. To break out during an active lock or Post Lockdown, that same non-technical user suddenly has to figure out:
+   * Why Force Stopping the app fails 
+   * Why rebooting into Safe Mode hides the app icon.
+   * Why importing a doctored backup JSON fails.
+To escape, a user who only knew how to tap "Allow" on a screen now has to understand Safe Mode and ways to boot into it at the same time failing to do it
+it, hunt down disguised packages in Apps which can be frustrating or learn how to set up ADB on a computer from scratch while their phone is actively fighting them.
+
+Tho reality still holds for the 1% of power users: if you *already* have ADB set up on your PC or know how Device Admin lists work in Safe Mode before you install the app, the ceiling isn't high enough to trap you.
 
 ---
+
+
 
 
 ## 🚀 Key Features
