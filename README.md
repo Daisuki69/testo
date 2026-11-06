@@ -49,6 +49,10 @@ Tho reality still holds for the 1% of power users: if you *already* have ADB set
 ---
 ## How to properly use QIEZKA:
 
+Go to 'Release' Install the latest app
+It is recommended to also Install the Companion App SIREN
+
+Open Qiezka
 Initiate the app
 
 Grant each permission directly from within the app via in-app buttons
@@ -102,6 +106,57 @@ You have to reschedule the failed session and have to pass the Quiz
 
 What is MathX？
 
+**QIEZKA MathX**
+MathX is a procedural math quiz engine designed to eliminate answer memorization.
+Instead of static questions with fixed answers, you build formulas using the integrated scientific calculator keypad. Every quiz attempt randomizes variables, constants, operators, and coefficients, computing fresh solutions to force you to actually solve the math every single time.
+**1. Integrated SciCalc Formula Creation**
+Type a base formula directly using the built-in scientific calculator keypad:
+User-created formula
+ax² + bx + c = 0
+You only need to define the algebraic structure once.
+**2. Dynamic Instance & Answer Generation**
+On every quiz run, the engine generates a valid instance by randomizing variables, constants, operators, and coefficients. It computes the exact mathematical solution on the fly and builds fresh answer choices.
+Base Formula 1
+ax² + bx + c = 0
+Quiz Attempt 1
+3x² - 12x + 9 = 0   →   x = 1, 3
+Quiz Attempt 2
+2x² - 10x + 12 = 0   →   x = 2, 3
+Base Formula 2
+a(x [op] b) = y
+Quiz Attempt 1
+2(x + 3) = 14   →   x = 4
+Quiz Attempt 2
+5(5 - 2) = x   →   x = 15
+Base Formula 3
+(ax² [op1] b) / c [op2] d = z
+Quiz Attempt 1
+(3y² + 15) / 3 - 2 = 12   →   y = 3, -3
+Quiz Attempt 2
+(2z² - 8) / 4 + 5 = 11   →   z = 4, -4
+Because the numbers and answers shift every time, memorizing previous runs is useless.
+**3. Accuracy Scoring & Overall Timer**
+Math Decks drop per-question reaction speed scoring in favor of pure accuracy under an overall quiz timer.
+• Full credit for every correct solution—no points lost for taking a few extra seconds to calculate.
+• Bank time on simpler equations to spend on heavier calculations.
+• You must actually work through the steps to pass before the overall clock runs out.
+**4. Anti-Cheat**
+Every time the app detects it is not in the foreground or the user switches apps, the quiz variables, constants, operators, and coefficients get re-randomized on the fly without restarting the quiz from zero. It is recommended to own scientific calculator and have it ready whenever.
+**5. Standard Quiz Apps vs. Math Deck**
+Standard Quiz Deck | QIEZKA Math Deck
+Static text questions | SciCalc keypad formulas
+Fixed, repeatable answers | Randomized variables, constants, operators & coefficients
+Per-question speed scoring | Accuracy-based + overall timer
+Beaten by memorization | Requires real computation
+
+How to use MathX
+In the Dashboard
+1. Tap 'Add'
+2. Type a valid formula usiing the 
+3. integrated Keyboard
+4. Tap Save
+Then set a Schedule
+
 ---
 ## The Enforcement  Engine
 
@@ -133,29 +188,50 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 *  In the OLD KeepAlive Strategy We used Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped/Killed. Works best in 3 button navigation. 
 *   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating. (OLD KeepAlive Strategy)
 
-*   Current KeepAlive Strategy
+*   Current KeepAlive Strategy uses the same method as HomeShell PROXY BUT as a VoiceAssistant
 
 *   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Post Lockdown activates immediately.
 *   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
 
 ---
+## Limitations
+Not guaranteed to be bug free and inescapable
 
-## 🛠️ Step-by-Step Setup Guide:
-To instal Qiezka App.
-On-Device
+## Privacy and data handling
+We dont use online database everything works offline, we dont ask for personal information
 
-### 📱 On-Device Setup
+## Known issues (Verbose)
+1. at some bug after i finish quiz idk what happened or what did i do but i clicked back suddenly hit with 18hr focus sessionclicking quiz now dosent work, it is red but when i click it, it dims out
 
-Grant each permission directly from within the app via in-app buttons:
+this would never happen on original uncode, check why whethetr cuz its impossible for timer to go beyond duration
 
-| Permission | Type |
-|---|---|
-| Accessibility Service | **Essential** |
-| Notifications | **Essential** |
-| Unrestricted Background | **Essential** |
-| Device Administrator | **Essential** |
+2.wait too long tjeres no animation at all, check why
 
-> On Android 13+: if Accessibility appears greyed out, tap **App Info** inside the onboarding — then tap the three-dot menu → *Allow restricted settings* — then return and grant it.
+3. autoquiz happened and i failedclicking quiz now dosent work, it is red but when i click it, it dims out 
+i pressed back it gave me 16hrs, investigate correlation to no.1
+
+
+4. recent opened apps shpws -556minutes 
+
+5. a rescheduled autoquiz then tap take quiz button(maybe sjust quiz) gives me quiz randomized from every deck(supposedd to be from a deck only)
+
+after reaching 0:00 in timer, while qiezka is in backgrpund it didnt take me to mandatory quiz it instead calls for homework expired
+
+i rescheduled  again but waiting for timer to 0:00 while qiezka is in foreground i can see notif few seconds remain till qiezka auto unlocks or something
+after reaches 0:00 i can split second see timer restarted to duration then transfered me to mandatory quiz
+
+i cant click at choices nor the back button(maybe just lag)
+
+6. the back button in the mandatpry quiz(post lockdown quiz) shhould mean move user to dashboard call for quiz not passed or expiredauto quis happened i tapped back or home button, but everytime i open another app it auto launches qieka, idk if i like it or not, but i think it should autoqui pops up i think i should be able to still dismiss it or open another app, but if the autoqui timer or the allocated duration reached 0:00 then call for quiz expired or not passed
+
+7. failed auto quiz should call for failed session not  restart quiz
+
+ALSOO REMINDER AUTOQUIZ TI
+MER STARTS ONLY IF USER IS IN non allowed apps for specifc amount of time and this timer is accumulated across apps withinn a specific range of time meaning iff i opened tiktok for 13 minutes an hour or hours ago then right now
+
+8. stage 1 restriction should only happen if the schedule is within range
+
+9. dont you think the scheduling r the timer  whether its from rreschedule or step 2 schedule, shpuld set time at the nearest clean 5min time  and am or pm
 
 ---
 
