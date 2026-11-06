@@ -192,6 +192,7 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 
 *   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Post Lockdown activates immediately.
 *   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
+*   Android Safemode is mitigated not though some zero-day exploits We wont tell you how and you shouldnt figure it out.
 
 ---
 ## Limitations
