@@ -73,7 +73,7 @@ Note: While there is scheduled session if the time remaining reached 60 mins
 Stage 1 activates.
 
 in active Focus Session
-You can tap the selected deck to review, open other apps or browse the internet. only if it isnt blocked by the Classifier.
+You can tap the selected deck to review, open other apps or browse the internet. only if it isnt blocked by The Enforcement Engine is active.
 
 You can tap 'Take Quiz Now' to exit early
 
@@ -86,15 +86,24 @@ The current grading system is speed based
 3.0s for Instant worth 1.0 points
 4.5s for Sharp worth 0.75 points
 6.0s for Deliberate worth 0.5 points
->7.5s for Unreal worth 0.25 points
+>7.5s for Hesitant worth 0.25 points
 
 If initial tap is wrong then the whole question is worth 0 points
 
 If the user fail to reach 80%
+In a 'Take Quiz Now' scenario
+A user can tap the back button to return to Focus Session
+In a Mandatory Quiz Session. User will be diirected to Dashboard with Post-Lockdown banner Active
+The Enforcement Engine is still Active.
+in this State you can Take Standard Quiz or schedule another Focus session
 
+To fully remove the Enforcement
+You have to reschedule the failed session and have to pass the Quiz
+
+What is MathX？
 
 ---
-## The Classifier
+## The Enforcement  Engine
 
 ### 1. 3-Stage App Classifier 🧠
 *   Stage 1 — Master Veto Gate: 
@@ -120,10 +129,12 @@ Unknown URL with no academic signals, with or without distraction signals are Bl
 ### 3. Anti-Bypass Stack ⚔️
 *   Device Admin — blocks uninstall.
 *   Accessibility Service — blocks ddistracting apps
-*  Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped/Killed. Works best in 3 button navigation. (OLD KeepAlive Strategy)
 
-*   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating.
-(OLD KeepAlive Strategy)
+*  In the OLD KeepAlive Strategy We used Home Shell Proxy (QiezkaHomeHandlerActivity holds ROLE_HOME) — pressing Home auto-revives the enforcement process if force-stopped/Killed. Works best in 3 button navigation. 
+*   Launcher Change Interception — isFastHomeRoleEvent() detects role change dialogs sub-millisecond. 4-burst retry at 0/25/60/120ms dismisses the picker before it finishes inflating. (OLD KeepAlive Strategy)
+
+*   Current KeepAlive Strategy
+
 *   Boot Persistence — BootReceiver + AlarmManager exact alarms fire on ACTION_BOOT_COMPLETED. If lockdown was active, it resumes. If timer expired while powered off, Post Lockdown activates immediately.
 *   Sideloaded Apps Detection — newly installed apps detected via installer/store package monitoring are immediately classified via 3-Stage App Classifier 🧠
 
