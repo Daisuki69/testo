@@ -1,7 +1,8 @@
 # ⚡ QIEZKA
 
-Qiezka 🛡️
-Is a normal quiz based lockdown app for Android.
+What is Qiezka？
+Qiezka Is a normal quiz based lockdown app for Android.
+Its like any yher lockdown app it is supposed to force you to do what you promised to do.
 
 Let us establish first a taxonomy
 
@@ -24,16 +25,15 @@ such as:
 ​2. I (U)
 
 The only catch is
-U can only restrict further than what I already allowed in the first place.
-Choice 1. is the IDEAL Focus app but only IF it can be granted using standard android permissions
+You can only restrict further than what I already allowed in the first place.
+Choice 1. is the IDEAL Focus app
+because it makes Integrity  and Enforcement as ppriority
+but it can only be as strong IF it can be granted using standard android permissions
 By forcing the user to learn ADB or root their phone just to install the app, those tools accidentally train the user on how to defeat them.
 eg. Device-Owner, Shizuku, Root Based
 
 Device Owner is included even if the only way out is flashing stock firmware via recovery/fastboot. because via the steps they did the user learned what a normal user woudlnt.
 Also a bugged app running as Device Owner or Root is inherently more destructive
- 
-a user can provide the permissions just by tapping 
-A Low Floor to Enter, High Ceiling to Escape
 
 By keeping the setup strictly on standard permissions, this architecture creates **asymmetric friction**:
  * **The Entry Floor (Zero Technical Skill):** Any normal user can install two APKs and tap "Allow" on Android's native UI prompts for Accessibility, Device Admin, Battery Optimization, and Default Home App (RoleManager.ROLE_HOME). Even Android 13+'s "Restricted Settings" block is guided step-by-step right inside PermissionWalkthrough.tsx. You don't need a PC, terminal commands, or developer options to lock yourself in.
@@ -47,11 +47,54 @@ it, hunt down disguised packages in Apps which can be frustrating or learn how t
 Tho reality still holds for the 1% of power users: if you *already* have ADB set up on your PC or know how Device Admin lists work in Safe Mode before you install the app, the ceiling isn't high enough to trap you.
 
 ---
+## How to properly use QIEZKA:
+
+Initiate the app
+
+Grant each permission directly from within the app via in-app buttons
+
+> On Android 13+: if Accessibility appears greyed out, tap **App Info** inside the onboarding — then tap the three-dot menu → *Allow restricted settings* — then return and grant it.
+
+On  the Dashboard
+
+1. Tap Create Decks
+2. Tap '+' button
+3. Select either Manual, Import, Custom Import
+4. Tap save
+Do this as much as you like
+
+How to set a Session
+1. Tap add under Focus Sessions
+2. Select a deck
+3. Set time and duration
+4. Tap finalize
+Now just wait till due
+Note: While there is scheduled session if the time remaining reached 60 mins
+Stage 1 activates.
+
+in active Focus Session
+You can tap the selected deck to review, open other apps or browse the internet. only if it isnt blocked by the Classifier.
+
+You can tap 'Take Quiz Now' to exit early
+
+after the duration ends you will have to Pass the mandatory Post-Lockdown Quiz
+
+Inorder to pass accumulated points must be 80% of total
+
+The current grading system is speed based
+1.5s for Unreal worth 1.5 points
+3.0s for Instant worth 1.0 points
+4.5s for Sharp worth 0.75 points
+6.0s for Deliberate worth 0.5 points
+>7.5s for Unreal worth 0.25 points
+
+If initial tap is wrong then the whole question is worth 0 points
+
+If the user fail to reach 80%
 
 
-
-
-## 🚀 Key Features
+---
+## The Classifier
 
 ### 1. 3-Stage App Classifier 🧠
 *   Stage 1 — Master Veto Gate: 
